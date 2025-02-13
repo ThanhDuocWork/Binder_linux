@@ -1,0 +1,49 @@
+****************************************************************
+	GpioRaspberryPi.h 
+****************************************************************
+
+class GpioRaspberryPi
+
+function:
+// Constructor export GPIO
+#GpioRaspberryPi(int Idgpio);
+	input: ID GPIO kiểu int
+	output: function tự config và export của gpio đó
+	
+// Function unexport GPIO
+#void unExportGpio();
+	input: lấy ID GPIO từ constructor khởi tạo ở trên
+	output: function tự config và unexport của gpio đó
+	
+// Function set direction for GPIO
+#bool setDirection(GPIODIRECTION option);
+	input: 
+		- lấy ID GPIO từ constructor khởi tạo ở trên
+		- option: INPUT hoặc OUTPUT kiểu dữ liệu enum GPIODIRECTION
+	output: function tự config direction của gpio đã chọn là INPUT hoặc OUTPUT
+	
+// Function set value for GPIO
+#bool setValue(GPIOVALUE value);
+	input: 
+		- lấy ID GPIO từ constructor khởi tạo ở trên
+		- vlaue: HIGH hoặc LOW kiểu dữ liệu enum GPIOVALUE
+	output: function set gpio đã chọn là 'mức cao' hoặc 'mức thấp' đối với direction OUTPUT
+			và 'báo lỗi' khi direction INPUT
+
+// Function get value for GPIO
+#bool getValue(GPIOVALUE value);
+	input: 
+	output: đọc giá trị low hoặc high từ port gpio
+			
+****************************************************************
+
+Lệnh thường gặp
+#tạo mở file: sudo nano [filename.format]
+#build source: sudo g++ Example/TestGpio.cpp Src/gpioRaspberryPi.cpp -o Example/TestGpio
+#chạy combiler: ./Test-GPIO
+
+****************************************************************
+//build makefile
+1. make
+2. cd Example/
+3. ./TestGpio

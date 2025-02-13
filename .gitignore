@@ -1,0 +1,24 @@
+#Ignore generated code
+Services/AudioSrv/AudioServiceInterface/inc/AudioServiceInterface
+Services/AudioSrv/AudioServiceInterface/inc/AudioReceiver
+Services/AudioSrv/AudioServiceInterface/src
+
+Services/HMISrv/HMIServiceInterface/inc/HMIReceiver
+Services/HMISrv/HMIServiceInterface/inc/HMIServiceInterface
+Services/HMISrv/HMIServiceInterface/src
+
+Services/MqttSrv/MqttServiceInterface/inc/MqttReceiver
+Services/MqttSrv/MqttServiceInterface/inc/MqttServiceInterface
+Services/MqttSrv/MqttServiceInterface/src
+
+Services/servicemanager/*.o
+Services/servicemanager/driver/ashmem/*.cache.mk
+Services/servicemanager/driver/ashmem/.tmp_versions/
+Services/servicemanager/driver/binder/*.cache.mk
+Services/servicemanager/driver/binder/.tmp_versions/
+
+#Project configurations
+.vscode/
+
+#Do not add output
+output/

@@ -1,0 +1,51 @@
+***************************************************************************************************
+=======================================  class Button(){}  =======================================
+***************************************************************************************************
+
+// func member of class
+# Constructor Button(int pinButton, int timeShort = 200, int timeLong = 2000, int timeStuck = 5000)
+    => khi khởi tạo một member sẽ cấu hình export và set input pin gpio cho chân button
+    => có thể set thời gian cho event press (timeShortPress, timeLongPress, timeStuck)
+        -> default là timeShortPress = 200 miliseconds
+        -> default là timeLongPress = 2 seconds
+        -> default là timeStuck = 5 seconds
+
+# Destructor ~Button()
+    => sau khi ra khỏi scope unexport pin gpio 
+
+# void startHandle()
+    => bắt đầu handle button
+    => handle các event press, release, short press, long press, struck
+
+# void stopHandle()
+    => dừng handle button
+
+# bool pullUpDnControll(GPIOVALUE pullContr = GPIOVALUE::LOW);
+    => dùng để cấu hình button là tích cực mức cao hay mức thấp
+    => default khi không set là button tích cực mức thấp
+        -> func sẽ return về  false khi set tích cực mức thấp 
+        -> func sẽ return về  true khi set tích cực mức cao
+
+# virtual void press()
+    => để có thể  override và bắt event press từ class khác
+    => dùng để bắt event khi button is press
+    => khi có event press -> call event này
+
+# virtual void release()
+    => để có thể  override và bắt event release từ class khác
+    => dùng để bắt event khi button được nhả ra 
+    => khi có event nhả từ button -> event này được call
+
+# virtual void shortPress()
+    => để có thể  override và bắt event shortPress từ class khác
+
+# virtual void longPress()
+    => để có thể  override và bắt event longPress từ class khác
+
+# virtual void stuck()
+    => để có thể  override và bắt event stuck từ class khác
+
+# build source
+    sudo g++ -pthread Src/Button.cpp Example/TestButton.cpp -I. ../GpioRaspberryPi/Src/gpioRaspberryPi.cpp -o Example/TestButton
+    cd Example/
+    ./TestButton

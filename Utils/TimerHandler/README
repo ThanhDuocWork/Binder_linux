@@ -1,0 +1,29 @@
+///////////////////////////////////////////////////////////////////////
+                    class: TimerHandler
+***********************************************************************
+bộ Timer sẽ active một duration, sau khi timeout thì sẽ callback onTimerTimeout()
+
+// Constructor TimerHandler
+#TimerHandler(std::function<void()> callback, std::chrono::milliseconds duration)
+    input: 
+        - function dùng để callback sau khi timout -> format_type void()
+        - thời gian duration -> format_type uint
+    output: timer bắt đầu đếm theo duration cho đến timeout và sẽ callback function với điều kiện đang active
+
+// Function
+#void start()
+    bất đầu start timer
+
+#void stop()
+    dừng bộ timer
+
+***********************************************************************
+#build source with command sample:
+-> sudo g++ -pthread Src/TimerHandler.cpp Example/TestTimerHandler.cpp -o Example/TestTimerHandler
+-> cd Example/
+-> ./TestTimerHandler
+
+#build source with Makefile
+-> make
+-> cd Example
+-> ./TestTimerHandler

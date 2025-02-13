@@ -1,0 +1,64 @@
+///////////////////////////////////////////////////////////////////////
+                    class: LedHandle
+***********************************************************************
+chứa các function có thể control các service của GPIO
+
+// Constructor LedHandle
+#LedHandle(int pin, uint duration)
+    input: 
+        - ID pin: của gpio
+        - duration: khoảng thời gian muốn sử dụng ID pin
+    output: sẽ gán ID pin và duration vào hệ thống
+
+// Function
+#void start();
+    active class LedHandle()
+
+#void stop();
+    stop class LedHandle()
+
+#void pause();
+    dừng timer sau khi timer làm việc xong và đợi start lại
+
+#void ConfigBlink(uint timeLow, uint timeHigh);
+    input:
+        - timeLow: độ rộng xung low
+        - timeHigh: độ rộng cung high
+    output: tính toán cho ID pin blink theo input
+
+#void ConfigGetting(uint timeGetting);
+    input:
+        - timeGetting: thời gian giữa 2 lần get value từ port
+    output: tính toán cho ID pin get value theo timer
+
+#void TimerTimeOutDuration();
+    sẽ được callback khi timer chạy hết duration
+
+#void print_Time()
+    fuction print time system
+
+#void toggleValue();
+    tính toán 2 trạng thái low và high khác nhau
+
+#void digitalWrite(int pin, bool state);
+    set value cho chân GPIO low hoặc high
+
+#void digitalRead(int pin);
+    get value từ chân GPIO
+
+#void playLedPattern(ENUM_LED_PATTERN ledPattern);
+    input:
+        - LED_PATTERN_UI_00_01: led sẽ blink 0.5s
+        - LED_PATTERN_UI_00_02: led sẽ blink 1s
+    khi request một blink mới thì cái blink cũ sẽ dừng và hoạt động blink mới
+
+***********************************************************************
+#build source with command sample:
+-> sudo g++ -pthread Src/LedHandle.cpp Example/TestLedHandle.cpp -I. ../TimerHandler/Src/TimerHandler.cpp -I. ../GpioRaspberryPi/Src/gpioRaspberryPi.cpp -o Example/TestLedHandle
+-> cd Example/
+-> ./TestLedHandle
+
+#build source with Makefile
+-> make
+-> cd Example
+-> ./TestLedHandle

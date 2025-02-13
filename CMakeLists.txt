@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.0)
+project(ECallApplication)
+# Add all sub directories
+add_definitions("-Wl,--copy-dt-needed-entries")
+add_subdirectory(Apps/EcallApp)
+add_subdirectory(Services/AudioSrv/AudioMgrSrv)
+add_subdirectory(Services/HMISrv/HMIMgrSrv)
+add_subdirectory(Services/MqttSrv/MqttMgrSrv)
+add_subdirectory(Utils)
+add_subdirectory(Tools/Commander)

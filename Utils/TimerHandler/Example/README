@@ -1,0 +1,8 @@
+///////////////////////////////////////////////////////////////////////
+                    Sample: TestTimerHandler.cpp
+***********************************************************************
+gồm 2 task với thời gian xử lý riêng biệt, sau khi tạo 2 timer cho 2 task này với thời gian 5s và 10s
+# start timer task1 và task2 cùng lúc
+# timer task1 active xong callback lại fuction task1 
+# trong khi đó bộ timer task2 chỉ chạy thêm 5s nữa là callback function task2
+=> 2 thread chạy độc lập cùng lúc 
